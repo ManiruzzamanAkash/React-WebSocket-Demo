@@ -57,6 +57,11 @@ echo.channel('user.created')
     console.log('User Created: ', e)
   })
 
+echo.channel('notification.created')
+  .listen('NotificationCreated', (e) => {
+    console.log('Notification Created: ', e)
+  })
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
