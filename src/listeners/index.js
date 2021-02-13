@@ -14,5 +14,6 @@ echo.channel('user.created')
 echo.channel('notification.created')
     .listen('NotificationCreated', (e) => {
         // new Notification(e.notification.message);
+        console.log('e', e)
         Store.dispatch(createNotificationWebsocketAction(e.notification));
     })
