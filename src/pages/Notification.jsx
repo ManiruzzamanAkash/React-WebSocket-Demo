@@ -22,7 +22,7 @@ const Notification = () => {
                     <div className="float-left">
                         <h3>
                             Notifications
-                            <span className="badge badge-warning">{notifications.length}</span>
+                            <span className="badge badge-warning">{notifications ? notifications.length : 0}</span>
                         </h3>
                     </div>
                     <div className="float-right">

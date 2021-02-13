@@ -12,9 +12,12 @@ const NotificationReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case Types.NOTIFICATION_LIST:
+            console.log('action.payload', action.payload);
+            
             return {
                 ...state,
                 notifications: action.payload.notifications,
+                isLoading: action.payload.isLoading
             };
         case Types.NOTIFICATION_CREATE:
             // const updatedList = action.payload !== null ? [...state.notifications, action.payload] :  state.notifications
@@ -24,7 +27,7 @@ const NotificationReducer = (state = initialState, action) => {
                 message: ''
             };
         case Types.NOTIFICATION_CREATE_WEBSOCKET:
-            const updatedListWebsocket = action.payload !== null ? [...state.notifications, action.payload] :  state.notifications
+            const updatedListWebsocket = action.payload !== null ? [action.payload, ...state.notifications] :  state.notifications
             return {
                 ...state,
                 notifications: updatedListWebsocket,

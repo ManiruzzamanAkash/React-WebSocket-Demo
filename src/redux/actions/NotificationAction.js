@@ -5,35 +5,14 @@ export const getNotificationAction = () => async (dispatch) => {
     let response = {
         notifications: [],
         isLoading: true,
-        message: '',
-        errors: []
     };
-    let url = '';
-    // url = '';
-    try {
-        // await Axios.get(url)
-        //     .then((res) => {
-        //         const { data, message, status } = res.data;
-        //         response.notifications = data;
-        //         response.isLoading = false;
-        //     })
-        //     .catch((err) => {
+    dispatch({ type: Types.NOTIFICATION_LIST, payload: response });
 
-        //     });
-        const fakeNotifications = [
-            {
-                id: 1,
-                message: "Test Notification",
-            },
-            {
-                id: 2,
-                message: "Test Notification 2",
-            }
-        ];
-        response.notifications = fakeNotifications;
-    } catch (error) {
-        response.message = 'Something Went Wrong !';
-    }
+    await axios.get(`http://localhost:8000/api/notifications`)
+        .then((res) => {
+            response.notifications = res.data;
+        })
+
     response.isLoading = false;
     dispatch({ type: Types.NOTIFICATION_LIST, payload: response });
 };
@@ -46,14 +25,14 @@ export const createNotificationAction = (message) => async (dispatch) => {
     }
     let responseData = null;
     await axios.post('http://localhost:8000/api/notification-create', postData)
-    .then(res => {
-        if(res.data !== null)
-            responseData = res.data;
-    })
-    .catch(err => {
-        alert('Something went wrong to send notification')
-    });
-    
+        .then(res => {
+            if (res.data !== null)
+                responseData = res.data;
+        })
+        .catch(err => {
+            alert('Something went wrong to send notification')
+        });
+
     dispatch({ type: Types.NOTIFICATION_CREATE, payload: responseData });
 }
 
