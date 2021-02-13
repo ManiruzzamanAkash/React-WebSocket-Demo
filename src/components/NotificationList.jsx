@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Websocket from 'react-websocket';
+import { useSelector, useDispatch } from "react-redux";
+import { getNotificationAction } from '../redux/actions/NotificationAction';
+import NotificationCreateModal from './NotificationCreateModal';
 
 const NotificationList = (props) => {
-    const [notifications, setNotifications] = useState([]);
+    const dispatch = useDispatch();
     const localUrl = 'ws://10.3.203.191:8200/tutorial/akij-test-learning/public:6001/app/AKIJTESTPUSHERAPP?protocol=7&client=js&version=4.4.0&flash=false';
     const localUrl3 = 'ws://127.0.0.1:6001/app/AKIJTESTPUSHERAPP?protocol=7&client=js&version=4.3.1&flash=false';
     const localUrl2 = 'ws://127.0.0.1:6001/app/AKIJTESTPUSHERAPP?protocol=7&client=js';
 
+    const isLoading = useSelector((state) => state.notification.isLoading);
+    const notifications = useSelector((state) => state.notification.notifications);
 
     const handleData = (data) => {
         // let result = JSON.parse(data);
@@ -23,8 +28,19 @@ const NotificationList = (props) => {
 
     return (
         <>
+            <div className="row justify-content-center">
+                <div className="col-6">
+                    {
+                        notifications.map((notification, index) => (
+                            <div key={index} className="card card-body mb-3">
+                                {notification.message}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
             <Websocket url={localUrl2}
-                onOpen={handleOpen} 
+                onOpen={handleOpen}
                 onClose={handleClose}
                 reconnect={true} debug={true}
                 onMessage={(data) => handleData(data)}

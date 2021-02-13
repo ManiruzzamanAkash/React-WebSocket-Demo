@@ -13,6 +13,7 @@ import Store from "./redux/Store";
 
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
+import { createNotificationWebsocketAction } from './redux/actions/NotificationAction';
 
 const MIX_PUSHER_APP_ID = "AKIJTESTPUSHERAPP";
 const MIX_PUSHER_APP_KEY = "AKIJTESTPUSHERAPP";
@@ -65,7 +66,7 @@ echo.channel('user.created')
 
 echo.channel('notification.created')
   .listen('NotificationCreated', (e) => {
-    console.log('Notification Created: ', e)
+    Store.dispatch(createNotificationWebsocketAction(e.notification));
   })
 
 ReactDOM.render(
