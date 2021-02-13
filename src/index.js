@@ -5,15 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Import reducer
+import { Provider } from "react-redux";
+
+// Import Store
+import Store from "./redux/Store";
+
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
-const MIX_PUSHER_APP_ID="AKIJTESTPUSHERAPP";
-const MIX_PUSHER_APP_KEY="AKIJTESTPUSHERAPP";
-const MIX_PUSHER_APP_SECRET="AKIJTESTPUSHERAPPAKIJTESTPUSHERAPPAKIJTESTPUSHERAPPAKIJTESTPUSHERAPP";
-const MIX_PUSHER_APP_CLUSTER="mt1";
-const MIX_HOST_NAME="mt1";
-const MIX_HOST_ADDRESS="127.0.0.1";
+const MIX_PUSHER_APP_ID = "AKIJTESTPUSHERAPP";
+const MIX_PUSHER_APP_KEY = "AKIJTESTPUSHERAPP";
+const MIX_PUSHER_APP_SECRET = "AKIJTESTPUSHERAPPAKIJTESTPUSHERAPPAKIJTESTPUSHERAPPAKIJTESTPUSHERAPP";
+const MIX_PUSHER_APP_CLUSTER = "mt1";
+const MIX_HOST_NAME = "mt1";
+const MIX_HOST_ADDRESS = "127.0.0.1";
 
 // window.Pusher = require('pusher-js');
 
@@ -63,9 +69,9 @@ echo.channel('notification.created')
   })
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={Store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
