@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
+import NotificationReducer from "./reducers/NotificationReducer";
 
 const RootReducer = combineReducers({
-    // auth: AuthReducer,
-    // product: ProductReducer,
+    notification: NotificationReducer,
 });
 
 export default RootReducer;
