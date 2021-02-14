@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { checkLoginAction } from '../../redux/actions/AuthAction';
 import { Spinner } from 'react-bootstrap';
 import Layout from '../Layout';
-import { toast } from 'react-toastify';
-
 
 export default function Login({ setToken }) {
     const dispatch = useDispatch();

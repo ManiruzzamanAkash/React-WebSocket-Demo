@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Notification from './pages/Notification';
-import Chat from './pages/Chat';
+import ChatPage from './module-chat/pages/ChatPage';
 import './App.css';
 import Login from './components/auth/Login';
 const themes = {
@@ -42,7 +42,7 @@ function App() {
               <Notification />
             </Route>
             <Route path="/chat">
-              <Chat />
+              <ChatPage />
             </Route>
             <Route path="/">
               <Home />
