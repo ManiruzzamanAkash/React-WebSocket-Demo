@@ -2,7 +2,7 @@ import React from 'react';
 
 const Chat = (props) => {
     // const user = props.user ? props.user : null;
-    const user = {'test':'test'};
+    const user = { 'test': 'test' };
     return (
         <div className="card card-body" style={{ height: '78vh' }}>
             {
@@ -11,12 +11,9 @@ const Chat = (props) => {
                     <div className="item-right text-right">
                         <div className="right-section-message">
                             <div className="float-right">
-                                <i className="fa fa-user"></i>
-                            </div>
-                            <div className="float-right">
                                 <p className="ml-5 mr-2">
                                     Hello akash
-                    </p>
+                                </p>
                             </div>
                             <div className="clearfix"></div>
                         </div>
@@ -29,7 +26,7 @@ const Chat = (props) => {
                             <div className="float-left">
                                 <p className="ml-1 mr-2 pr-5">
                                     Hello Polash
-                        </p>
+                                </p>
                             </div>
                             <div className="clearfix"></div>
                         </div>

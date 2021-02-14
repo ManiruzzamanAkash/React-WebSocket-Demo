@@ -8,7 +8,7 @@ export const getNotificationAction = () => async (dispatch) => {
     };
     dispatch({ type: Types.NOTIFICATION_LIST, payload: response });
 
-    await axios.get(`http://localhost:8000/api/notifications`)
+    await axios.get(`${process.env.REACT_APP_API_URL}notifications`)
         .then((res) => {
             response.notifications = res.data;
         })
