@@ -1,6 +1,5 @@
-import './App.css';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,7 +9,8 @@ import {
 import Home from './pages/Home';
 import Notification from './pages/Notification';
 import Chat from './pages/Chat';
-
+import './App.css';
+import Login from './components/auth/Login';
 const themes = {
   light: {
     foreground: "#000000",
@@ -25,8 +25,15 @@ const themes = {
 const AppContext = React.createContext(themes.light);
 
 function App() {
+  const [token, setToken] = useState();
+
+  if (!token) {
+    return <Login setToken={setToken} />
+  }
+
   return (
     <AppContext.Provider value={themes.dark}>
+
       <Router>
         <div className="App">
           <Navbar />
@@ -43,7 +50,6 @@ function App() {
           </Switch>
         </div>
       </Router>
-
     </AppContext.Provider>
 
 
