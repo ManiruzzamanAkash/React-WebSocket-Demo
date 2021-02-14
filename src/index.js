@@ -19,6 +19,8 @@ import Store from "./redux/Store";
 // Import all listeners
 import './listeners/index';
 
+require('./services/axios');
+
 ReactDOM.render(
   <Provider store={Store}>
     <ToastContainer />

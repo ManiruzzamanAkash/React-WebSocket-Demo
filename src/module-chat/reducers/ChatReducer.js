@@ -5,7 +5,8 @@ const initialState = {
     users: [],
     messages: [],
     isLoading: false,
-    message: ''
+    message: '',
+    receiver: null
 };
 
 const ChatReducer = (state = initialState, action) => {
@@ -19,6 +20,24 @@ const ChatReducer = (state = initialState, action) => {
                 isLoading: action.payload.isLoading
             };
 
+        case Types.UPDATE_ACTIVE_RECEIVER:
+            return {
+                ...state,
+                receiver: action.payload,
+            };
+
+        case Types.UPDATE_MESSAGE:
+            return {
+                ...state,
+                message: action.payload,
+            };
+
+        case Types.UPDATE_ACTIVE_MESSAGES:
+            return {
+                ...state,
+                messages: action.payload,
+            };
+
         case Types.CHAT_LIST:
             return {
                 ...state,
@@ -27,11 +46,11 @@ const ChatReducer = (state = initialState, action) => {
             };
 
         case Types.CREATE_CHAT:
-            const messages = action.payload !== null ? [action.payload, ...state.messages] : state.messages
+            // const messages = action.payload !== null ? [action.payload, ...state.messages] : state.messages
             return {
                 ...state,
-                messages,
                 message: ''
+                // messages,
             };
 
         case Types.DELETE_CHAT:
